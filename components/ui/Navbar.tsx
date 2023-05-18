@@ -1,6 +1,9 @@
-import { Spacer, Text, useTheme } from '@nextui-org/react'
-import Image from 'next/image'
 import { CSSProperties } from 'react'
+
+import Image from 'next/image'
+import NextLink from 'next/link'
+
+import { Link, Spacer, Text, useTheme } from '@nextui-org/react'
 
 const style: CSSProperties = {
   display: 'flex',
@@ -23,8 +26,12 @@ export const Navbar = () => {
         width={70}
         height={70}
       />
-      <Text color='white' h2>P</Text>
-      <Text color='white' h3>okemon</Text>
+      <NextLink href='/' passHref>
+        <Link style={{ display: 'inherit' }}>
+          <Text color='white' h2>P</Text>
+          <Text color='white' h3>okemon</Text>
+        </Link>
+      </NextLink>
 
       <Spacer css={{ flex: 1 }} />
 
