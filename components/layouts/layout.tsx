@@ -12,6 +12,8 @@ const mainStyle: CSSProperties = {
   padding: '0 20px'
 }
 
+const origin = (typeof window === 'undefined') ? '' : window.location.origin
+
 export const Layout: FC<Props> = ({ children, title }) => {
   return (
     <>
@@ -20,6 +22,9 @@ export const Layout: FC<Props> = ({ children, title }) => {
         <meta name='author' content='Oswaldo Gomez' />
         <meta name='description' content={`Information about pokemon ${title}`} />
         <meta name='keywords' content={`pokemon, ${title}, pokedex`} />
+        <meta property='og:title' content={`Information about ${title}`} />
+        <meta property='og:description' content={`This is the page about ${title}`} />
+        <meta property='og:image' content={`${origin}/img/banner.png`} />
       </Head>
 
       <Navbar />
