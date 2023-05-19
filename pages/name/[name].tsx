@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 import { pokeApi } from '../../api'
-import { Pokemon, PokemonListResponse } from '../../interfaces'
+import { PokemonListResponse } from '../../interfaces'
+import { getPokemonInfo } from '../../utils'
 
 import { PokemonPage } from '../../components/ui'
 
@@ -20,12 +21,10 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { name } = params as { name: string }
-
-  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}`)
-
+  
   return {
     props: {
-      pokemon: data
+      pokemon: await getPokemonInfo(name)
     }
   }
 }
